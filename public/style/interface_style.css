@@ -419,6 +419,40 @@
 }
 
 
+
+#loginForm{
+  display: grid;
+  row-gap: 1rem;
+}
+
+#loginForm label {
+  font-size: 0.8rem;
+}
+#loginForm input {
+  padding: 0.6rem;
+  border-radius: 6px;
+
+}
+
+#loginForm input {
+  padding: 0.8rem;
+  border: 1px solid #eee;
+  outline: none;
+  font-size: 1rem;
+  background-color: var(--secondary-color) !important;
+  color: var(--text-color);
+}
+#loginForm input:focus {
+  border-color: var(--accent-color);
+}
+#login-Button-panel{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
 .button-path-fill-color{
   fill: var(--invertPanel-color);
 }

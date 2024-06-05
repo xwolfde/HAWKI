@@ -140,5 +140,6 @@
     "writingAssistanceRequest": "Estoy trabajando en un proyecto científico y necesito ayuda con el estilo de escritura y la formateación. Ya he redactado mi trabajo, pero no estoy seguro de si he seguido todas las directrices de formateo y convenciones de escritura correctamente. ¿Podrías ayudarme a revisar mi trabajo y ofrecerme consejos para mejorar la formateación y el estilo de escritura?",
     "deleteChat": "El chat se borrará permanentemente. <br>¿Quieres continuar?",
     "delete": "Borrar",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "sessionTimeout_Msg": "Su sesión de conexión ha expirado.<br>Por favor, conéctese de nuevo."
 }

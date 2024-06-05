@@ -73,6 +73,12 @@ button {
     border-radius: 0.75rem;
 }
 
+.outlineButton{
+    border: 2px solid var(--accent-color);
+    background-color: transparent;
+    color: var(--accent-color);
+}
+
 /* Size of logo on interface page */
 #HAWK_logo {
     max-width: 8rem;

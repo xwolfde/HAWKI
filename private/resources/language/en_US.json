@@ -140,5 +140,6 @@
     "writingAssistanceRequest": "I am working on a scientific project and need help with writing style and formatting. I have already composed my work, but I am not sure if I have followed all formatting guidelines and writing conventions correctly. Could you please help me review my work and give me advice on improving the formatting and writing style?",
     "deleteChat": "The chat will be permanently deleted.<br>Do you want to continue?",
     "delete": "Delete",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "sessionTimeout_Msg": "Your connection session is expired.<br>Please login again."
 }

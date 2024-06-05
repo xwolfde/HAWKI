@@ -8,13 +8,16 @@
 	if(!isset($_SESSION['translation'])){
 		setLanguage();
 	}
-	$translation = $_SESSION['translation'];
-    
+	$translation = $_SESSION['translation'];	
+
+	$_SESSION['last_activity'] = time(); 
+	include LIBRARY_PATH . 'session_management.php'; 
+
+
 	if (!isset($_SESSION['username'])) {
-		header("Location: login.php");
+		header("Location: logout");
 		exit;
 	}
-
 
 	// IF CSRF IS NOT SET -> user is in Interface without logging in. -> logout to remove variables and set a new session.
 	if (!isset($_SESSION['csrf_token']) || $_SESSION['csrf_token'] === '') {
@@ -50,27 +53,27 @@
 	<title>HAWKI</title>
 
 
-	<link rel="stylesheet" href="/public/style/style.css">
-	<link rel="stylesheet" href="/public/style/interface_style.css">
-	<link rel="stylesheet" href="/public/style/settings_style.css">
+	<link rel="stylesheet" href="public/style/style.css">
+	<link rel="stylesheet" href="public/style/interface_style.css">
+	<link rel="stylesheet" href="public/style/settings_style.css">
 
 	<!-- COMMON SCRIPTS -->
-	<script src="/public/js/scripts.js"></script>
-	<script src="/public/js/interface_functions.js"></script>
-	<script src="/public/js/syntax_modifier.js"></script>
+	<script src="public/js/scripts.js"></script>
+	<script src="public/js/interface_functions.js"></script>
+	<script src="public/js/syntax_modifier.js"></script>
 
 	<!-- HLJS -->
-	<link id="hljsTheme" type="text/css" rel="stylesheet" href="/public/assets/highlightJS/hljsLight.css">
-	<script src="/public/assets/highlightJS/highlight.min.js"></script>
-	<script src="/public/assets/highlightJS/go.min.js"></script>
+	<link id="hljsTheme" type="text/css" rel="stylesheet" href="public/assets/highlightJS/hljsLight.css">
+	<script src="public/assets/highlightJS/highlight.min.js"></script>
+	<script src="public/assets/highlightJS/go.min.js"></script>
 
 	<!-- KaTex detects and renders math formulas -->
-	<link rel="stylesheet" href="/public/assets/katex/katex.min.css">
-	<script defer src="/public/assets/katex/katex.min.js"></script>
-	<script defer src="/public/assets/katex/contrib/auto-render.min.js"></script>
+	<link rel="stylesheet" href="public/assets/katex/katex.min.css">
+	<script defer src="public/assets/katex/katex.min.js"></script>
+	<script defer src="public/assets/katex/contrib/auto-render.min.js"></script>
 
 	<!-- Jquery v3.7.1 -->
-	<script src="/public/assets/jquery/jquery.min.js"></script>
+	<script src="public/assets/jquery/jquery.min.js"></script>
 
 	<script src="/public/assets/lz-string.min.js"></script>
 	<script src="/public/assets/crypto-js.min.js"></script>
@@ -79,6 +82,7 @@
 	<!-- TO PREVENT FOUC WHEN RELOADING THE PAGE IN DARK MODE
 		 THE SETTINGS AND IT'S START FUNCTIONS SHOULD BE INCLUDED IN THE HEADER BEFORE THE PAGE IS LOADED -->
 	<?php include VIEWS_PATH . 'settings.php'; ?>
+
   	<script>
 		SwitchDarkMode(false);
 		UpdateSettingsLanguage(`<?php echo $_SESSION['language'] ?>`);
@@ -275,7 +279,7 @@
 				</div>
 
 
-				<p >
+				<p>
 					<span>&Prime;</span>
 					<span contenteditable="true" id="system-prompt"></span>
 					<span>&rdquo;</span>
@@ -340,7 +344,7 @@
 					<?php echo $translation["deleteChat"]; ?>
 				</h3>
 				<div class="modal-buttons-bar">
-					<button onclick="closeDeletePanel()"><?php echo $translation["cancel"]; ?></button>
+					<button class="outlineButton" onclick="closeDeletePanel()"><?php echo $translation["cancel"]; ?></button>
 					<button onclick="deleteChatLog()"><?php echo $translation["delete"]; ?></button>
 				</div>
 			</div>
@@ -372,6 +376,8 @@
 	const stopIcon = 'M9,9h6v6H9V9z'
 
 	CheckModals();
+
+	window.addEventListener('DOMContentLoaded', resetTimer());
 
 	//Load chat by default when the page is loaded.
 	window.addEventListener('DOMContentLoaded', (event) => {

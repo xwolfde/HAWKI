@@ -140,6 +140,7 @@
     "writingAssistanceRequest": "Je travaille sur un projet scientifique et j'ai besoin d'aide pour le style d'écriture et la mise en forme. J'ai déjà rédigé mon travail, mais je ne suis pas sûr d'avoir suivi toutes les directives de formatage et les conventions d'écriture correctement. Pourriez-vous m'aider à réviser mon travail et me donner des conseils pour améliorer la mise en forme et le style d'écriture ?",
     "deleteChat": "La discussion sera définitivement supprimée. <br>Voulez-vous continuer ?",
     "delete": "Supprimer",
-    "cancel": "Annuler"
+    "cancel": "Annuler",
+    "sessionTimeout_Msg": "Votre session de connexion a expiré.<br>Veuillez vous connecter à nouveau."
 
 }

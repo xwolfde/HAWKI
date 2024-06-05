@@ -140,6 +140,7 @@
     "writingAssistanceRequest": "Ich arbeite an einem wissenschaftlichen Projekt und benötige Hilfe beim Schreibstil und der Formatierung. Ich habe meine Arbeit bereits verfasst, bin mir aber nicht sicher, ob ich alle Formatierungsrichtlinien und Schreibkonventionen korrekt befolgt habe. Könntest du mir bitte helfen, meine Arbeit zu überprüfen und mir Ratschläge zur Verbesserung der Formatierung und des Schreibstils geben?",
     "deleteChat": "The chat will be permanently deleted. <br>Do you want to continue?",
     "delete": "Löschen",
-    "cancel": "Abbrechen"
+    "cancel": "Abbrechen",
+    "sessionTimeout_Msg": "Ihre Verbindungssitzung ist abgelaufen.<br>Bitte melden Sie sich erneut an."
 
 }

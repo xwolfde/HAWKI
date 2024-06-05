@@ -110,7 +110,8 @@
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-Token': csrfToken // Add CSRF token header
+                'X-CSRF-Token': csrfToken,
+                'action':'changeLanguage'
             },
             body: JSON.stringify({inputLang: lang}),
         })

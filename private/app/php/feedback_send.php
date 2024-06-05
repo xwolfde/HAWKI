@@ -23,6 +23,8 @@ function sanitizeInput($data) {
 
 // Check if the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	$_SESSION['last_activity'] = time();
+
     // Get the JSON string from the request body
     $jsonString = file_get_contents("php://input");
     

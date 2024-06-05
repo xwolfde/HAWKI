@@ -140,5 +140,6 @@
     "writingAssistanceRequest": "Sto lavorando a un progetto scientifico e ho bisogno di aiuto con lo stile di scrittura e la formattazione. Ho già redatto il mio lavoro, ma non sono sicuro di aver seguito tutte le linee guida di formattazione e le convenzioni di scrittura correttamente. Potresti aiutarmi a rivedere il mio lavoro e fornirmi consigli su come migliorare la formattazione e lo stile di scrittura?",
     "deleteChat": "La chat sarà cancellata in modo permanente. <br>Volete continuare?",
     "delete": "Cancellare",
-    "cancel": "Annullamento"
+    "cancel": "Annullamento",
+    "sessionTimeout_Msg": "La sessione di connessione è scaduta.<br>Si prega di effettuare nuovamente il login."
 }

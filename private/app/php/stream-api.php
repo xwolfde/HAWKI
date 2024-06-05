@@ -25,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 	exit;
 }
 
+$_SESSION['last_activity'] = time();
+
 if (file_exists(ENV_FILE_PATH)){
     $env = parse_ini_file(ENV_FILE_PATH);
 }

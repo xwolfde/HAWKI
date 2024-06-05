@@ -47,7 +47,9 @@
 
 
     // Check if the request is POST
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SERVER['HTTP_ACTION']) && $_SERVER['HTTP_ACTION'] === 'changeLanguage'){
+	    $_SESSION['last_activity'] = time();
+
         // CSRF Protection
         if (!isset($_SERVER['HTTP_X_CSRF_TOKEN']) || $_SERVER['HTTP_X_CSRF_TOKEN'] !== $_SESSION['csrf_token']) {
             $csrf_token = generate_csrf_token();
