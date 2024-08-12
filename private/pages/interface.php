@@ -208,19 +208,11 @@
 					<div class="input-controlbar">
 						<?php 
 							if(isset($env) ? $env["MODEL_SELECTOR_ACTIVATION"] : getenv("MODEL_SELECTOR_ACTIVATION") && $env["MODEL_SELECTOR_ACTIVATION"] === "true"){
-								echo					
-									'<select id="model-selector" onchange="OnDropdownModelSelection()">
-										<option value="gpt-4o-mini">OpenAI GPT-4o Mini</option>
-										<option value="gpt-4o">OpenAI GPT-4o</option>
-										<option value="gpt-4-turbo">OpenAI GPT-4 Turbo</option>
-										<option value="gpt-4">OpenAI GPT-4</option>
-										<option value="gpt-3.5-turbo">OpenAI GPT-3.5 Turbo</option>
-										<option value="meta-llama-3.1-8b-instruct">meta-llama-3.1-8b-instruct</option>
-										<option value="meta-llama-3.1-70b-instruct">meta-llama-3.1-70b-instruct</option>
-										<option value="llama-3-sauerkrautlm-70b-instruct">Llama 3 70B Sauerkraut</option>
-										<option value="mixtral-8x7b-instruct">Mixtral-8x7b-instruct</option>
-										<option value="qwen2-72b-instruct">Qwen 2 72B Instruct</option>
-									</select>';
+								echo	'<select id="model-selector" onchange="OnDropdownModelSelection()">'
+								foreach (array_keys($env['LLM_MODEL_API']) as $api_key) {
+									echo "<option value=\"".$api_key."\">".$env["LLM_MODEL_DESC"][$api_key]."</option>\n";
+								}
+								echo	'</select>';
 							}
 							else{
 								echo '<div></div>';
@@ -361,6 +353,8 @@
 	let abortCtrl = new AbortController();
 	let isReceivingData = false;
 
+	let llm_api = <php echo json_encode(array_keys($env['LLM_MODEL_API'])); >;
+
 	const sendicon = document.querySelector('#input-send-icon');
 	const startIcon = 'M16,12l-4-4l-4,4 M12,16V8';
 	const stopIcon = 'M9,9h6v6H9V9z'
@@ -388,7 +382,8 @@
 
 
 
-	let activeModel = "gpt-4o";
+	// let activeModel = "gpt-4o";
+	let activeModel = Object.keys(llm_api)[0];
 	let streamAPI = "";
 	window.addEventListener('DOMContentLoaded', (event) => {
 		if(localStorage.getItem("definedModel")){
@@ -408,23 +403,7 @@
 
 	function SwitchModel(model){
 		activeModel = model;
-		switch(activeModel){
-			case('gpt-4o-mini'):
-			case('gpt-4o'):
-			case('gpt-4-turbo'):
-			case('gpt-4'):
-			case('gpt-3.5-turbo'):
-				streamAPI = "api/stream-api";
-				break;
-
-			case('meta-llama-3.1-8b-instruct'):
-			case('meta-llama-3.1-70b-instruct'):
-			case('llama-3-sauerkrautlm-70b-instruct'):
-			case('mixtral-8x7b-instruct'):
-			case('qwen2-72b-instruct'):
-				streamAPI = 'api/GWDG-api';
-				break;
-		}
+		streamAPI = llm_api[model];
 	}
 
 
