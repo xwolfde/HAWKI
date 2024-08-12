@@ -383,14 +383,15 @@
 
 
 	// let activeModel = "gpt-4o";
-	let activeModel = Object.keys(llm_api)[0];
+	let defaultModel = Object.keys(llm_api)[0];
+	let activeModel = defaultModel;
 	let streamAPI = "";
 	window.addEventListener('DOMContentLoaded', (event) => {
 		if(localStorage.getItem("definedModel")){
 			SwitchModel(localStorage.getItem("definedModel"));
 		}
 		else{
-			SwitchModel("gpt-4o");
+			SwitchModel(defaultModel);
 		}
 		document.getElementById("model-selector").value = activeModel;
     });
