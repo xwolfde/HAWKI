@@ -111,6 +111,7 @@
 								$_SESSION['username'] = $_SERVER[$env["EXTERNAL_USERNAME_ATTRIBUTE"]];
 							} else {
 								$_SESSION['username'] = 'Anonymous';
+							}
 						}
 						if (!$login_available) {
 							echo 'No authentication method defined';
