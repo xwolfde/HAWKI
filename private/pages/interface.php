@@ -210,11 +210,11 @@
 							if(isset($env) ? $env["MODEL_SELECTOR_ACTIVATION"] : getenv("MODEL_SELECTOR_ACTIVATION") && $env["MODEL_SELECTOR_ACTIVATION"] === "true"){
 								echo					
 									'<select id="model-selector" onchange="OnDropdownModelSelection()">
-										<option value="gpt-4o-mini">OpenAI GPT-4o</option>
+										<option value="gpt-4o-mini">OpenAI GPT-4o Mini</option>
 										<option value="gpt-4o">OpenAI GPT-4o</option>
-										<option value="gpt-4-turbo">OpenAI GPT-4o</option>
-										<option value="gpt-4">OpenAI GPT-4o</option>
-										<option value="gpt-3.5-turbo">OpenAI GPT-4o</option>
+										<option value="gpt-4-turbo">OpenAI GPT-4 Turbo</option>
+										<option value="gpt-4">OpenAI GPT-4</option>
+										<option value="gpt-3.5-turbo">OpenAI GPT-3.5 Turbo</option>
 										<option value="meta-llama-3.1-8b-instruct">meta-llama-3.1-8b-instruct</option>
 										<option value="meta-llama-3.1-70b-instruct">meta-llama-3.1-70b-instruct</option>
 										<option value="llama-3-sauerkrautlm-70b-instruct">Llama 3 70B Sauerkraut</option>
