@@ -107,7 +107,7 @@
 						}
 						if ((isset($env) ? $env["Authentication"] : getenv("Authentication")) == "External") {
 							$login_available = true;
-							if (isset($env["EXTERNAL_USERNAME_ATTRIBUTE"]) and (isset($_SERVER[$env["EXTERNAL_USERNAME_ATTRIBUTE"]])) {
+							if (isset($env["EXTERNAL_USERNAME_ATTRIBUTE"]) and (isset($_SERVER[$env["EXTERNAL_USERNAME_ATTRIBUTE"]]))) {
 								$_SESSION['username'] = $_SERVER[$env["EXTERNAL_USERNAME_ATTRIBUTE"]];
 							} else {
 								$_SESSION['username'] = 'Anonymous';
