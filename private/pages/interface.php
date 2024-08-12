@@ -353,7 +353,7 @@
 	let abortCtrl = new AbortController();
 	let isReceivingData = false;
 
-	let llm_api = <php echo json_encode(array_keys($env['LLM_MODEL_API'])); >;
+	let llm_api = <?php echo json_encode(array_keys($env['LLM_MODEL_API'])); ?>;
 
 	const sendicon = document.querySelector('#input-send-icon');
 	const startIcon = 'M16,12l-4-4l-4,4 M12,16V8';
