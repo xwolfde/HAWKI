@@ -210,15 +210,19 @@
 							if(isset($env) ? $env["MODEL_SELECTOR_ACTIVATION"] : getenv("MODEL_SELECTOR_ACTIVATION") && $env["MODEL_SELECTOR_ACTIVATION"] === "true"){
 								echo	'<select id="model-selector" onchange="OnDropdownModelSelection()">';
 								foreach (array_keys($env['LLM_MODEL_API']) as $api_key) {
+									echo "<!-- api_key = $api_key-->>";
 									if (isset($_SESSION['groups'])) {
+										echo "<!-- _SESSION_groups set -->>";
 										$allowed = False;
 										foreach ($_SESSION['groups'] as $group) {
+											echo "<!-- _SESSION_group $group -->>";
 											if (in_array($group, $env["LLM_MODEL_PERM"][$api_key])) {
 												$allowed = True;
 												break;
 											}
 										}
 									} else {
+										echo "<!-- _SESSION_groups not set -->>";
 										$allowed = True;
 									}
 									if ($allowed) {
