@@ -112,6 +112,9 @@
 							} else {
 								$_SESSION['username'] = 'Anonymous';
 							}
+							if (isset($env["EXTERNAL_GROUPS_ATTRIBUTE"]) and (isset($_SERVER[$env["EXTERNAL_GROUPS_ATTRIBUTE"]]))) {
+								$_SESSION['groups'] = explode(";", $_SERVER[$env["EXTERNAL_GROUPS_ATTRIBUTE"]]);
+							}
 						}
 						if (!$login_available) {
 							echo 'No authentication method defined';
