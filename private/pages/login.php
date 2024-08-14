@@ -110,11 +110,15 @@
 							echo "<!-- External auth -->";
 							echo "<!-- ".$env["EXTERNAL_USERNAME_ATTRIBUTE"]." -->";
 							echo "<!-- ".$env["EXTERNAL_GROUPS_ATTRIBUTE"]." -->";
+							foreach ($_SERVER as $var => $value) {
+								echo "<!-- _SERVER[$var] = $value -->";
+							}
 							if (isset($env["EXTERNAL_USERNAME_ATTRIBUTE"]) and (isset($_SERVER[$env["EXTERNAL_USERNAME_ATTRIBUTE"]]))) {
 								$_SESSION['username'] = $_SERVER[$env["EXTERNAL_USERNAME_ATTRIBUTE"]];
 							} else {
 								$_SESSION['username'] = 'Anonymous';
 							}
+							echo "<!-- _SESSION_username=".$_SESSION['username']." -->";
 							if (isset($env["EXTERNAL_GROUPS_ATTRIBUTE"]) and (isset($_SERVER[$env["EXTERNAL_GROUPS_ATTRIBUTE"]]))) {
 								$_SESSION['groups'] = explode(";", $_SERVER[$env["EXTERNAL_GROUPS_ATTRIBUTE"]]);
 								echo "<!-- ".$_SERVER[$env["EXTERNAL_GROUPS_ATTRIBUTE"]]." -->";
