@@ -216,7 +216,8 @@
 										$allowed = False;
 										foreach ($_SESSION['groups'] as $group) {
 											echo "<!-- _SESSION_group $group -->>";
-											if (in_array($group, $env["LLM_MODEL_PERM"][$api_key])) {
+											$allowed_groups = explode(";", $env["LLM_MODEL_PERM"][$api_key]);
+											if (in_array($group, $allowed_groups)) {
 												$allowed = True;
 												break;
 											}
