@@ -211,17 +211,17 @@
 								echo	'<select id="model-selector" onchange="OnDropdownModelSelection()">';
 								foreach (array_keys($env['LLM_MODEL_API']) as $api_key) {
 									if (isset($_SESSION['groups'])) {
-										allowed = False;
+										$allowed = False;
 										foreach ($_SESSION['groups'] as $group) {
 											if ($group in $env["LLM_MODEL_PERM"][$api_key]) {
-												allowed = True;
+												$allowed = True;
 												break;
 											}
 										}
 									} else {
-										allowed = True;
+										$allowed = True;
 									}
-									if (allowed) {
+									if ($allowed) {
 										echo "<option value=\"".$api_key."\">".$env["LLM_MODEL_DESC"][$api_key]."</option>\n";
 									}
 								}
