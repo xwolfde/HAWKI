@@ -213,7 +213,7 @@
 									if (isset($_SESSION['groups'])) {
 										$allowed = False;
 										foreach ($_SESSION['groups'] as $group) {
-											if ($group in $env["LLM_MODEL_PERM"][$api_key]) {
+											if (in_array($group, $env["LLM_MODEL_PERM"][$api_key])) {
 												$allowed = True;
 												break;
 											}
