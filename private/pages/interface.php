@@ -382,7 +382,6 @@
 
 
 
-	// let activeModel = "gpt-4o";
 	let defaultModel = Object.keys(llm_api)[0];
 	let activeModel = defaultModel;
 	let streamAPI = "";
