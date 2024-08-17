@@ -44,7 +44,7 @@
 		} else {
 			$_SESSION['username'] = 'Anonymous';
 		}
-		echo "<!-- _SESSION_username=".$_SESSION['username']." -->";
+		// echo "<!-- _SESSION_username=".$_SESSION['username']." -->";
 		if (isset($env["EXTERNAL_GROUPS_ATTRIBUTE"]) and (isset($_SERVER[$env["EXTERNAL_GROUPS_ATTRIBUTE"]]))) {
 			$_SESSION['groups'] = explode(";", $_SERVER[$env["EXTERNAL_GROUPS_ATTRIBUTE"]]);
 			// echo "<!-- ".$_SERVER[$env["EXTERNAL_GROUPS_ATTRIBUTE"]]." -->";
