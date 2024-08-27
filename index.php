@@ -39,7 +39,12 @@ switch($request_path){
         $dataProtectionLocation = isset($env) ? $env["PRIVACY_LOCATION"] : getenv("PRIVACY_LOCATION");
         header("Location: $dataProtectionLocation");
         exit;
-        
+ 
+    case('/accessibility'):
+        $accessibilityLocation = isset($env) ? $env["ACCESSIBILITY_LOCATION"] : getenv("ACCESSIBILITY_LOCATION");
+        header("Location: $accessibilityLocation");
+        exit;
+       
     case('/api/feedback_send'):
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             include_once( LIBRARY_PATH . "feedback_send.php");
