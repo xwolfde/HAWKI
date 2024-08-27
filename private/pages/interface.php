@@ -184,8 +184,8 @@
 					</svg>
 				</div>
 				<div class="info">
-					<!-- <a href="#" id="feedback" onclick="load(this, 'feedback_loader.php')"><?php echo $translation["FeedBack"]; ?></a>
-					     <a href="logout"><?php echo $translation["SignOut"]; ?></a> -->
+					<!-- <a href="#" id="feedback" onclick="load(this, 'feedback_loader.php')"><?php echo $translation["FeedBack"]; ?></a> -->
+					<!-- <a href="logout"><?php echo $translation["SignOut"]; ?></a> -->
 					<br>
 					<!-- CHANGE THIS PART TO ONCLICK EVENT TO LOAD THE PAGE IN MESSAGES PANEL.
 						DON'T FORGET TO ADD A PROPER PAGE IN VIEWS FOLDER. -->
