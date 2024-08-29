@@ -23,7 +23,12 @@ switch($request_path){
         exit();
 
     case('/logout'):
-        include_once LOGOUT_PAGE_PATH;
+	if ((isset($env) ? $env["Authentication"] : getenv("Authentication")) == "External") {
+		$logoutURL = isset($env)? $env["EXTERNAL_LOGOUT_URL"] : getenv("EXTERNAL_LOGOUT_URL");
+		header("Location: " . $logoutURL);
+	} else {
+		include_once LOGOUT_PAGE_PATH;
+	}
         exit();
 
     case('/oidc_login'):
