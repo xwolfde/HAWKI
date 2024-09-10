@@ -191,7 +191,7 @@
 						DON'T FORGET TO ADD A PROPER PAGE IN VIEWS FOLDER. -->
 					<a href="dataprotection"><?php echo $translation["DataSecurity"]; ?></a>
 					<a href="impressum" target="_blank"><?php echo $translation["Impressum"]; ?></a>
-					<a href="accessibility" target="_blank"><?php echo $translation["Accessibility"]; ?></a>
+					<!-- <a href="accessibility" target="_blank"><?php echo $translation["Accessibility"]; ?></a> -->
 				</div>
 
 			</div>
