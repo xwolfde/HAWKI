@@ -45,10 +45,10 @@ switch($request_path){
         header("Location: $dataProtectionLocation");
         exit;
  
-    case('/accessibility'):
+<!--    case('/accessibility'):
         $accessibilityLocation = isset($env) ? $env["ACCESSIBILITY_LOCATION"] : getenv("ACCESSIBILITY_LOCATION");
         header("Location: $accessibilityLocation");
-        exit;
+        exit; -->
        
     case('/api/feedback_send'):
         if($_SERVER["REQUEST_METHOD"] == "POST"){
