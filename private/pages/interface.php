@@ -207,6 +207,7 @@
 				<div class="input">
 
 					<div class="input-controlbar">
+
 						<?php 
 							if(isset($env) ? $env["MODEL_SELECTOR_ACTIVATION"] : getenv("MODEL_SELECTOR_ACTIVATION") && $env["MODEL_SELECTOR_ACTIVATION"] === "true"){
 								echo	'<select id="model-selector" onchange="OnDropdownModelSelection()">';
@@ -488,6 +489,11 @@
 		messageElements.forEach(messageElement => {
 			let messageObject = {};
 			messageObject.role = messageElement.dataset.role;
+			
+			if(activeModel === 'mistral-large-instruct' && messageObject.role === 'system'){
+				messageObject.role = 'user';
+			}
+
 			messageObject.content = messageElement.querySelector(".message-text").textContent;
 			requestObject.messages.push(messageObject);
 		})
@@ -581,17 +587,16 @@
 
 				let chunks = decodedData.split("data: ");
 				chunks.forEach((chunk, index) => {
-
+					
+					if(chunk.length == 0) return false;
 					if(!isJSON(chunk)){
 						return;
 					}
-					if(chunk.indexOf('finish_reason":"stop"') > 0) return false;
-					if(chunk.indexOf('DONE') > 0) return false;
-					if(chunk.indexOf('role') > 0) return false;
-					if(chunk.length == 0) return false;
+					const jsonChunk = JSON.parse(chunk);
+					if(jsonChunk["choices"][0]["finish_reason"] != null) return false;
 					
-					rawMsg += JSON.parse(chunk)["choices"][0]["delta"].content;
-					document.querySelector(".message:last-child").querySelector(".message-text").innerHTML =  FormatChunk(JSON.parse(chunk)["choices"][0]["delta"].content);
+					rawMsg += jsonChunk["choices"][0]["delta"].content;
+					document.querySelector(".message:last-child").querySelector(".message-text").innerHTML =  FormatChunk(jsonChunk["choices"][0]["delta"].content);
 
 				})
 
@@ -727,6 +732,30 @@
 				const textNode = document.createTextNode(plainTextTable);
 				table.parentNode.replaceChild(textNode, table);
 			});
+
+			// Remove code language from copy content
+			if(clone.tagName === "CODE") {
+				const firstChildNode = clone.firstChild;
+				const lastChildNode = clone.lastChild;
+
+				if(firstChildNode && firstChildNode.nodeName === "#text") {
+					// Remove the first node, as it contains the code language
+					// It is possible that the code language is followed by actual code, so check for that
+					if(firstChildNode.textContent.includes("\n")) {
+						firstChildNode.textContent = firstChildNode.textContent.split("\n")[1];
+					} else {
+						clone.removeChild(firstChildNode);
+					}
+				}
+
+				if (lastChildNode && lastChildNode.nodeName === "#text") {
+					// In some cases, there might be markdown content at the end of the code block due to formatting errors
+					const re = "\n?```"
+					if(lastChildNode.textContent.match(re)) {
+						lastChildNode.textContent = lastChildNode.textContent.replace("\n```", "");
+					}
+				}
+			}
 
 
 		// Get the text content of the modified clone
