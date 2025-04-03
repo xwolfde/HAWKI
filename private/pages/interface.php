@@ -189,6 +189,12 @@
 					<br>
 					<!-- CHANGE THIS PART TO ONCLICK EVENT TO LOAD THE PAGE IN MESSAGES PANEL.
 						DON'T FORGET TO ADD A PROPER PAGE IN VIEWS FOLDER. -->
+					<h3><?php echo $translation["Contactheadline"]; ?></h3>
+					<p>
+						<?php echo $translation["Contactinfo"]; ?>: <a href="mailto:rrze-hawki@fau.de">rrze-hawki@fau.de</a>
+					</p>
+
+					<h3><?php echo $translation["Legalheadline"]; ?></h3>
 					<a href="dataprotection"><?php echo $translation["DataSecurity"]; ?></a>
 					<a href="impressum" target="_blank"><?php echo $translation["Impressum"]; ?></a>
 					<!-- <a href="accessibility" target="_blank"><?php echo $translation["Accessibility"]; ?></a> -->
